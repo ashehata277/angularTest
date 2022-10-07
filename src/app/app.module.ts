@@ -6,6 +6,13 @@ import { AppComponent } from './app.component';
 import { TestSharedCompomentComponent } from './Shared/test-shared-compoment/test-shared-compoment.component';
 import { OAuthService } from './Services/AuthService/OAuth2service';
 import { ConfigurationReader } from './Services/CofigurationReader/ConfigurationReader';
+import { NgxTranslateModule } from './Services/translate/translate.module';
+import { FormsModule } from '@angular/forms';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DxCheckBoxModule, DxMenuModule, DxSelectBoxModule } from 'devextreme-angular';
+
+
 
 @NgModule({
   declarations: [
@@ -14,9 +21,16 @@ import { ConfigurationReader } from './Services/CofigurationReader/Configuration
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BsDropdownModule.forRoot(),
+    NgxTranslateModule,
+    FormsModule,
+    BrowserAnimationsModule, 
+    DxMenuModule,
+    DxSelectBoxModule,
+    DxCheckBoxModule,
   ],
-  providers: [OAuthService,ConfigurationReader],
+  providers: [OAuthService, ConfigurationReader],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

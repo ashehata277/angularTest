@@ -1,32 +1,27 @@
 import { Injectable, isDevMode } from "@angular/core";
-import DevelopingConfiguration from "../../../assets/Appsettingsdevelopement";
-import ProductionConfiguration from "../../../assets/Appsettingsdeployment";
+import DevelopingConfiguration from "../../../assets/Appsettingsdevelopement.json";
+import ProductionConfiguration from "../../../assets/Appsettingsdeployment.json";
 
 
-@Injectable(  {providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class ConfigurationReader {
-    constructor(){
-        
+    constructor() {
+
     }
-    Read(key:string) :string{
-        if(isDevMode())
-        {
-            
+    Read(key: string): string {
+        if (isDevMode()) {
             const jsondata = JSON.parse(JSON.stringify(DevelopingConfiguration));
             return jsondata[key];
         }
-        else
-        {
+        else {
             const jsondata = JSON.parse(JSON.stringify(ProductionConfiguration));
             return jsondata[key];
         }
-
-        
     }
 
-   
-    
 
 
-   
+
+
+
 }
