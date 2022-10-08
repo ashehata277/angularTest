@@ -46,6 +46,11 @@ export class OAuthService {
         })
     }
 
+    public GetUser = (): Promise<User | null> => {
+        return this._userManager.getUser();
+        };
+      
+
     completeLogout() {
         this._user = null;
         return this._userManager.signoutRedirectCallback();
@@ -69,7 +74,7 @@ export class OAuthService {
                 return this.checkUser(user);
             });
     }
-    private checkUser = (user: User | null): boolean => {
+    public checkUser = (user: User | null): boolean => {
         if (user === null) {
             return false;
         }

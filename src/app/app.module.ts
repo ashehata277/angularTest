@@ -3,33 +3,35 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import appRoutes from './appRoutes';
 import { AppComponent } from './app.component';
-import { TestSharedCompomentComponent } from './Shared/test-shared-compoment/test-shared-compoment.component';
 import { OAuthService } from './Services/AuthService/OAuth2service';
 import { ConfigurationReader } from './Services/CofigurationReader/ConfigurationReader';
 import { NgxTranslateModule } from './Services/translate/translate.module';
 import { FormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DxCheckBoxModule, DxLookupModule, DxMenuModule, DxSelectBoxModule } from 'devextreme-angular';
+import { DxButtonModule, DxCheckBoxModule, DxLookupModule, DxMenuModule, DxSelectBoxModule } from 'devextreme-angular';
+import { SignOutRedirectComponentComponent } from './SignComponents/sign-out-redirect-component/sign-out-redirect-component.component';
+import { SignRedirectComponentComponent } from './SignComponents/sign-redirect-component/sign-redirect-component.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestSharedCompomentComponent
+    SignOutRedirectComponentComponent,
+    SignRedirectComponentComponent
+    
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    BsDropdownModule.forRoot(),
     NgxTranslateModule,
     FormsModule,
     BrowserAnimationsModule, 
     DxMenuModule,
     DxSelectBoxModule,
     DxCheckBoxModule,
-    DxLookupModule
+    DxLookupModule,
+    DxButtonModule
   ],
   providers: [OAuthService, ConfigurationReader],
   bootstrap: [AppComponent]
