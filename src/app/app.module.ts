@@ -10,7 +10,7 @@ import { NgxTranslateModule } from './Services/translate/translate.module';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DxCheckBoxModule, DxMenuModule, DxSelectBoxModule } from 'devextreme-angular';
+import { DxCheckBoxModule, DxLookupModule, DxMenuModule, DxSelectBoxModule } from 'devextreme-angular';
 
 
 
@@ -29,6 +29,7 @@ import { DxCheckBoxModule, DxMenuModule, DxSelectBoxModule } from 'devextreme-an
     DxMenuModule,
     DxSelectBoxModule,
     DxCheckBoxModule,
+    DxLookupModule
   ],
   providers: [OAuthService, ConfigurationReader],
   bootstrap: [AppComponent]

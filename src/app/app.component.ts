@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Language } from './Services/translate/Languages';
 
 @Component({
   selector: 'app-root',
@@ -8,37 +7,35 @@ import { Language } from './Services/translate/Languages';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  showSubmenuModes: any;
-  showFirstSubmenuModes: any;
 
   title = 'TestProject';
-  constructor(private translate: TranslateService) {
-    this.showSubmenuModes = [{
-      name: 'onHover',
-      delay: { show: 0, hide: 500 },
-    }, {
-      name: 'onClick',
-      delay: { show: 0, hide: 300 },
-    }];
-    this.showFirstSubmenuModes = this.showSubmenuModes[1];
+  arabic = {
+    Code: "ar", Lable: "Arabic"
   }
-  // Languagues(): Language[] {
-  //   return this.lang.GetSupportedLanguages();
-  // }
+  english = {
+    Code: "en", Lable: "English"
+  }
+  SupportedLanguages: { Code: string, Lable: string }[] = [];
+  constructor(private translate: TranslateService) {
+    this.SupportedLanguages.push(this.arabic);
+    this.SupportedLanguages.push(this.english);
+  }
+  Languagues(): { Code: string, Lable: string }[] {
+    return this.SupportedLanguages;
+  }
 
 
-  changeSiteLanguage(localeCode: any): void {
-    debugger;
-    //   const selectedLanguage = this.lang.GetSupportedLanguages()
-    //     .find((language) => language.Code === localeCode)
-    //     ?.Lable.toString();
-    //   if (selectedLanguage) {
-    //     this.translate.use(localeCode);
-    //   }
-    //   const currentLanguage = this.translate.currentLang;
-    //   console.log('currentLanguage', currentLanguage);
-    // }
+  changeSiteLanguage(localeCode: string): void {
+    const selectedLanguage = this.SupportedLanguages
+      .find((language) => language.Code === localeCode)
+      ?.Lable.toString();
+    if (selectedLanguage) {
+      this.translate.use(localeCode);
+    }
+    const currentLanguage = this.translate.currentLang;
+    console.log('currentLanguage', currentLanguage);
   }
 }
+
 
 

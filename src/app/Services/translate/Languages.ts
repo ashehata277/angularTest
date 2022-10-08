@@ -1,16 +1,11 @@
-import { Injectable } from "@angular/core";
-
-
-@Injectable({ providedIn: 'root' })
-export class Language {
+class Language {
     private  arabic :Language  = new Language();
     private  english : Language =  new Language();
     constructor() {
-        debugger;
         this.SetLanguages();
      }
-    public Code: string;
-    public Lable: string;
+    public Code: string ="";
+    public Lable: string="";
 
     private  SetLanguages() {
         this.arabic.Code = "ar";
@@ -20,8 +15,7 @@ export class Language {
     }
 
     public  GetSupportedLanguages(): Language[] {
-        var languageList: Language[] = [
-        ];
+        var languageList: Language[] = [];
         languageList.push(this.arabic);
         languageList.push(this.english);
         return languageList;
