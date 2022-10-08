@@ -14,6 +14,7 @@ import { SignRedirectComponentComponent } from './SignComponents/sign-redirect-c
 import { ToastrModule } from 'ngx-toastr';
 import { Toastrservice } from './Services/ToastrService/ToastrService';
 import { RTLService } from './Services/GlobalLanguageService/RTLService';
+import { FormStateService } from './Services/FormStateService/FormStateService';
 
 
 
@@ -37,7 +38,7 @@ import { RTLService } from './Services/GlobalLanguageService/RTLService';
     DxButtonModule,
     ToastrModule.forRoot() 
   ],
-  providers: [OAuthService, ConfigurationReader,Toastrservice,RTLService],
+  providers: [OAuthService, ConfigurationReader,Toastrservice,RTLService,FormStateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
