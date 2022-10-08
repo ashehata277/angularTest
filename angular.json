@@ -25,7 +25,9 @@
             "styles": [
               "src/styles.css",
               "node_modules/devextreme/dist/css/dx.common.css",
-              "node_modules/devextreme/dist/css/dx.light.css"
+              "node_modules/devextreme/dist/css/dx.light.css",
+              "node_modules/ngx-toastr/toastr.css"  
+
             ],
             "scripts": []
           },
@@ -91,10 +93,13 @@
               "src/favicon.ico",
               "src/assets",
               "node_modules/devextreme/dist/css/dx.common.css",
-              "node_modules/devextreme/dist/css/dx.light.css",
+              "node_modules/devextreme/dist/css/dx.light.css"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css"  
+
+
             ],
             "scripts": []
             
@@ -104,6 +109,6 @@
     }
   },
   "cli": {
-    "analytics": "2106b405-0ce7-4bc1-b46b-26d04b7dd348"
+    "analytics": false
   }
 }

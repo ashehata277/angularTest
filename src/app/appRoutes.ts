@@ -4,9 +4,9 @@ import { SignRedirectComponentComponent } from "./SignComponents/sign-redirect-c
 
 
 
-const appRoutes :  Routes =  [
+const appRoutes: Routes = [
     { path: 'signin-callback', component: SignRedirectComponentComponent },
-    { path: 'signout-callback', component:SignOutRedirectComponentComponent },
+    { path: 'signout-callback', component: SignOutRedirectComponentComponent },
 ]
 
 export default appRoutes;

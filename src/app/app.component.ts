@@ -1,8 +1,8 @@
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Profile } from 'oidc-client';
 import { Subject } from 'rxjs';
 import { OAuthService } from './Services/AuthService/OAuth2service';
+import {  RTLService } from './Services/GlobalLanguageService/RTLService';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { OAuthService } from './Services/AuthService/OAuth2service';
 })
 export class AppComponent implements AfterViewInit {
   userAuthenticated: Subject<boolean> = new Subject<boolean>();
-  isAuthenticatedUser : boolean =false;
+  isAuthenticatedUser: boolean = false;
   _user: string | undefined;
   title = 'TestProject';
   arabic = {
@@ -21,8 +21,13 @@ export class AppComponent implements AfterViewInit {
     Code: "en", Lable: "English"
   }
   SupportedLanguages: { Code: string, Lable: string }[] = [];
+  lastLanguageCode: string | null;
+
+
   constructor(private translate: TranslateService,
-    private _authService: OAuthService,private cdr: ChangeDetectorRef) {
+    private _authService: OAuthService,
+    private cdr: ChangeDetectorRef,
+    public rtlService: RTLService) {
     this.userAuthenticated.next(false);
     this.SupportedLanguages.push(this.arabic);
     this.SupportedLanguages.push(this.english);
@@ -30,11 +35,16 @@ export class AppComponent implements AfterViewInit {
     this._authService._loginChangedSubject.asObservable().subscribe(x => {
       this.LoginChange();
     });
-    this.userAuthenticated.subscribe(x=>
-      {
-        this.isAuthenticatedUser = x;
-      })
-
+    this.userAuthenticated.subscribe(x => {
+      this.isAuthenticatedUser = x;
+    });
+    this.lastLanguageCode = localStorage.getItem("SelectedLanguage");
+    if (this.lastLanguageCode !== null) {
+      this.translate.use(this.lastLanguageCode as string)
+    }
+    else {
+      this.lastLanguageCode = "en";
+    }
   }
   ngAfterViewInit(): void {
     this.cdr.detectChanges();
@@ -51,8 +61,8 @@ export class AppComponent implements AfterViewInit {
     if (selectedLanguage) {
       this.translate.use(localeCode);
     }
-    const currentLanguage = this.translate.currentLang;
-    console.log('currentLanguage', currentLanguage);
+    const currentLangName = this.SupportedLanguages.find(x => x.Code === localeCode)?.Lable as string;
+    localStorage.setItem("SelectedLanguage", localeCode);
   }
 
   public LoginChange() {

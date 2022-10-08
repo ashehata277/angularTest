@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DxButtonModule, DxCheckBoxModule, DxLookupModule, DxMenuModule, DxSelectBoxModule } from 'devextreme-angular';
 import { SignOutRedirectComponentComponent } from './SignComponents/sign-out-redirect-component/sign-out-redirect-component.component';
 import { SignRedirectComponentComponent } from './SignComponents/sign-redirect-component/sign-redirect-component.component';
+import { ToastrModule } from 'ngx-toastr';
+import { Toastrservice } from './Services/ToastrService/ToastrService';
+import { RTLService } from './Services/GlobalLanguageService/RTLService';
 
 
 
@@ -31,9 +34,10 @@ import { SignRedirectComponentComponent } from './SignComponents/sign-redirect-c
     DxSelectBoxModule,
     DxCheckBoxModule,
     DxLookupModule,
-    DxButtonModule
+    DxButtonModule,
+    ToastrModule.forRoot() 
   ],
-  providers: [OAuthService, ConfigurationReader],
+  providers: [OAuthService, ConfigurationReader,Toastrservice,RTLService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
