@@ -7,7 +7,7 @@ import { SignRedirectComponentComponent } from "./SignComponents/sign-redirect-c
 const appRoutes: Routes = [
     { path: 'signin-callback', component: SignRedirectComponentComponent },
     { path: 'signout-callback', component: SignOutRedirectComponentComponent },
-    { path: 'test-module', loadChildren: () => import('./Modules/TestModule/test-module/test-module.module').then(m => m.TestModuleModule) }
+    { path: 'test-module', loadChildren: () => import('./Modules/test-module/test-module.module').then(m => m.TestModuleModule) }
 ]
 
 export default appRoutes;
