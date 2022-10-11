@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { User, UserManager, WebStorageStateStore } from "oidc-client";
-import { Subject } from "rxjs";
+import { from, Subject } from "rxjs";
 import { ConfigurationReader } from "../CofigurationReader/ConfigurationReader";
 
 @Injectable({
@@ -15,6 +15,7 @@ export class OAuthService {
     private clientRoot: string;
     private clientId: string;
     private idpAuthority: string;
+    public isUserAuthenticaed :boolean;
     constructor(private reader: ConfigurationReader) {
         this.clientRoot = reader.Read('baseUrl');
         this.clientId = reader.Read('clientId');
@@ -35,6 +36,9 @@ export class OAuthService {
             }
         );
         this.isAuthenticated;
+        from(this.isAuthenticated()).subscribe(isAuthenticated=>{
+            this.isUserAuthenticaed = isAuthenticated;
+        });
         this.access_token = this._user?.access_token;
     }
 

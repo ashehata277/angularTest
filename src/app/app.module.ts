@@ -15,6 +15,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { Toastrservice } from './Services/ToastrService/ToastrService';
 import { RTLService } from './Services/GlobalLanguageService/RTLService';
 import { FormStateService } from './Services/FormStateService/FormStateService';
+import { NotAuthorizedComponentComponent } from './Services/not-authorized-component/not-authorized-component.component';
+import { AuthorizationGuard } from './Services/RouterGaurds/AuthorizationGuard';
 
 
 
@@ -22,7 +24,8 @@ import { FormStateService } from './Services/FormStateService/FormStateService';
   declarations: [
     AppComponent,
     SignOutRedirectComponentComponent,
-    SignRedirectComponentComponent
+    SignRedirectComponentComponent,
+    NotAuthorizedComponentComponent
     
   ],
   imports: [
@@ -38,7 +41,7 @@ import { FormStateService } from './Services/FormStateService/FormStateService';
     DxButtonModule,
     ToastrModule.forRoot() 
   ],
-  providers: [OAuthService, ConfigurationReader,Toastrservice,RTLService,FormStateService],
+  providers: [OAuthService, ConfigurationReader,Toastrservice,RTLService,FormStateService,AuthorizationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
