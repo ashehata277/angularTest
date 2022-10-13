@@ -3,20 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import appRoutes from './appRoutes';
 import { AppComponent } from './app.component';
-import { OAuthService } from './Services/AuthService/OAuth2service';
 import { ConfigurationReader } from './Services/CofigurationReader/ConfigurationReader';
-import { NgxTranslateModule } from './Services/translate/translate.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DxButtonModule, DxCheckBoxModule, DxLookupModule, DxMenuModule, DxSelectBoxModule } from 'devextreme-angular';
 import { SignOutRedirectComponentComponent } from './SignComponents/sign-out-redirect-component/sign-out-redirect-component.component';
 import { SignRedirectComponentComponent } from './SignComponents/sign-redirect-component/sign-redirect-component.component';
 import { ToastrModule } from 'ngx-toastr';
-import { Toastrservice } from './Services/ToastrService/ToastrService';
-import { RTLService } from './Services/GlobalLanguageService/RTLService';
-import { FormStateService } from './Services/FormStateService/FormStateService';
 import { NotAuthorizedComponentComponent } from './Services/not-authorized-component/not-authorized-component.component';
-import { AuthorizationGuard } from './Services/RouterGaurds/AuthorizationGuard';
+import { SharedModuleModule } from './Services/SharedModule/shared-module/shared-module.module';
+import { NgxTranslateModule } from './Services/translate/translate.module';
+import { DxButtonComponent, DxButtonModule, DxLookupModule } from 'devextreme-angular';
 
 
 
@@ -26,22 +22,14 @@ import { AuthorizationGuard } from './Services/RouterGaurds/AuthorizationGuard';
     SignOutRedirectComponentComponent,
     SignRedirectComponentComponent,
     NotAuthorizedComponentComponent
-    
   ],
   imports: [
     BrowserModule,
+    SharedModuleModule,
     RouterModule.forRoot(appRoutes),
-    NgxTranslateModule,
-    FormsModule,
-    BrowserAnimationsModule, 
-    DxMenuModule,
-    DxSelectBoxModule,
-    DxCheckBoxModule,
-    DxLookupModule,
-    DxButtonModule,
-    ToastrModule.forRoot() 
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
-  providers: [OAuthService, ConfigurationReader,Toastrservice,RTLService,FormStateService,AuthorizationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
