@@ -1,6 +1,11 @@
 {
-    "Welcome":"Welcome",
-    "Login":"Login",
-    "Logout":"Logout",
-    "return" :"return"
+    "Welcome": "Welcome",
+    "Login": "Login",
+    "Logout": "Logout",
+    "return": "return",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "Position": "Position Name",
+    "State": "State ",
+    "City": "City"
 }
