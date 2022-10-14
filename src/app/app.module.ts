@@ -9,10 +9,14 @@ import { SignRedirectComponentComponent } from './SignComponents/sign-redirect-c
 import { ToastrModule } from 'ngx-toastr';
 import { NotAuthorizedComponentComponent } from './Services/not-authorized-component/not-authorized-component.component';
 import { SharedModuleModule } from './Services/SharedModule/shared-module/shared-module.module';
-import { NgxTranslateModule } from './Services/translate/translate.module';
 import { BackComponent } from './Shared/back/back.component';
-import { Toastrservice } from './Services/ToastrService/ToastrService';
-import type { ConfigurationReader } from './Services/CofigurationReader/ConfigurationReader';
+import { ConfigurationReader } from './Services/CofigurationReader/ConfigurationReader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { I18nServiceService } from './Services/i18nService/i18n-service.service';
+import { RTLService } from './Services/GlobalLanguageService/RTLService';
+import { DxButtonModule, DxLookupModule } from 'devextreme-angular';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { API_BASE_URL } from './Services/ClientService/client.service';
 
 
 
@@ -26,12 +30,26 @@ import type { ConfigurationReader } from './Services/CofigurationReader/Configur
   ],
   imports: [
     BrowserModule,
-    SharedModuleModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    DxButtonModule,
+    DxLookupModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useClass: I18nServiceService
+      },
+      isolate: false
+    })
   ],
-  providers:[],
+  providers: [
+    {
+      provide : API_BASE_URL,
+      useFactory : getUrlFromConfiguration,
+      deps: [ConfigurationReader]
+    }, RTLService],
 
   bootstrap: [AppComponent]
 })

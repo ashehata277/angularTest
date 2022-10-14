@@ -9,6 +9,9 @@ import { Toastrservice } from '../../ToastrService/ToastrService';
 import { RTLService } from '../../GlobalLanguageService/RTLService';
 import { FormStateService } from '../../FormStateService/FormStateService';
 import { AuthorizationGuard } from '../../RouterGaurds/AuthorizationGuard';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { I18nServiceService } from '../../i18nService/i18n-service.service';
+import { ToastrModule } from 'ngx-toastr';
 
 
 const DX_SHARED_MODULES = [
@@ -67,14 +70,21 @@ const providers = [
     CommonModule,
     DX_SHARED_MODULES,
     FormsModule,
-    NgxTranslateModule
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useClass: I18nServiceService,
+
+      },
+    })
   ],
   providers: [providers],
   exports:[
       DX_SHARED_MODULES,
       FormsModule,
       CommonModule,
-      NgxTranslateModule
+      TranslateModule,
+
     ]
 
 })
