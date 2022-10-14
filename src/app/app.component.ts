@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { OAuthService } from './Services/AuthService/OAuth2service';
 import { RTLService } from './Services/GlobalLanguageService/RTLService';

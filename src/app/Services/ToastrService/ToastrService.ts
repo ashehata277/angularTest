@@ -24,7 +24,6 @@ export class Toastrservice{
             this.toastrService.warning(message,title,{
                 timeOut:3000,
                 closeButton:false,
-
              });
         }
         error(message:string , title :string){
@@ -32,7 +31,6 @@ export class Toastrservice{
                 {
                     timeOut:3000,
                     closeButton:false,
-
                  });
         }
 }

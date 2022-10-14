@@ -6,6 +6,7 @@ import { SharedModuleModule } from 'src/app/Services/SharedModule/shared-module/
 import { TestShellComponent } from './test-shell/test-shell.component';
 import { TestFormDataService } from './shared/test-form-data.service';
 import { Service } from './shared/dataservice.service';
+import { NgxTranslateModule } from 'src/app/Services/translate/translate.module';
 
 
 
@@ -18,10 +19,10 @@ import { Service } from './shared/dataservice.service';
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path:'', component:MainComponentComponent},
+      { path: '', component: MainComponentComponent },
     ]),
     SharedModuleModule
-    ],
-  providers:[TestFormDataService,Service]
+  ],
+  providers: [TestFormDataService, Service]
 })
 export class TestModuleModule { }

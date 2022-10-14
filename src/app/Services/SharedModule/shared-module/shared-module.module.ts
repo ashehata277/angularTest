@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DxButtonModule, DxChartModule, DxCheckBoxModule, DxDataGridModule, DxDateBoxModule, DxDropDownBoxModule, DxDropDownButtonModule, DxFileUploaderModule, DxFormModule, DxHtmlEditorModule, DxListModule, DxLoadIndicatorModule, DxLoadPanelModule, DxLookupModule, DxMapModule, DxMenuModule, DxMultiViewModule, DxNavBarModule, DxNumberBoxModule, DxPopupModule, DxProgressBarModule, DxRadioGroupModule, DxScrollViewModule, DxSelectBoxModule, DxSortableModule, DxTabPanelModule, DxTabsModule, DxTagBoxModule, DxTemplateModule, DxTextAreaModule, DxTextBoxModule, DxToolbarModule, DxTreeListModule, DxTreeViewModule, DxValidationGroupModule, DxValidatorModule } from 'devextreme-angular';
-import { ToastrModule } from 'ngx-toastr';
+import {  DxButtonModule, DxChartModule, DxCheckBoxModule, DxDataGridModule, DxDateBoxModule, DxDropDownBoxModule, DxDropDownButtonModule, DxFileUploaderModule, DxFormModule, DxHtmlEditorModule, DxListModule, DxLoadIndicatorModule, DxLoadPanelModule, DxLookupModule, DxMapModule, DxMenuModule, DxMultiViewModule, DxNavBarModule, DxNumberBoxModule, DxPopupModule, DxProgressBarModule, DxRadioGroupModule, DxScrollViewModule, DxSelectBoxModule, DxSortableModule, DxTabPanelModule, DxTabsModule, DxTagBoxModule, DxTemplateModule, DxTextAreaModule, DxTextBoxModule, DxToolbarModule, DxTreeListModule, DxTreeViewModule, DxValidationGroupModule, DxValidatorModule } from 'devextreme-angular';
 import { NgxTranslateModule } from '../../translate/translate.module';
 import { FormsModule } from '@angular/forms';
 import { OAuthService } from '../../AuthService/OAuth2service';
@@ -67,16 +66,15 @@ const providers = [
   imports: [
     CommonModule,
     DX_SHARED_MODULES,
-    ToastrModule.forRoot(),
-    NgxTranslateModule,
     FormsModule,
+    NgxTranslateModule
   ],
   providers: [providers],
   exports:[
       DX_SHARED_MODULES,
-      NgxTranslateModule,
       FormsModule,
-      CommonModule
+      CommonModule,
+      NgxTranslateModule
     ]
 
 })
