@@ -4,18 +4,23 @@
   <span> {{'Welcome' | translate}} </span>
   <span [hidden]="!isAuthenticatedUser">{{_user}}</span>
   <dx-button [rtlEnabled]="rtlService.isRtlEnabled " [visible]="!isAuthenticatedUser" (onClick)="login()">
-    <span>{{'Login' | translate}}</span></dx-button>
+    <span>{{'Login' | translate}}</span>
+  </dx-button>
   <dx-button [rtlEnabled]="rtlService.isRtlEnabled " [visible]="isAuthenticatedUser" (onClick)="logout()">
-    <span>{{'Logout' | translate }}</span></dx-button>
+    <span>{{'Logout' | translate }}</span>
+  </dx-button>
   <div class="spacer"></div>
   <div>
-    <dx-lookup [rtlEnabled]="rtlService.isRtlEnabled" [dataSource]="Languagues()" displayExpr="Lable"
-      valueExpr="Code" (onValueChanged)="changeSiteLanguage($event.value)" [value]="lastLanguageCode">
+    <dx-lookup [rtlEnabled]="rtlService.isRtlEnabled" [dataSource]="Languagues()" [displayExpr]="displayTextLang" valueExpr="Code"
+      (onValueChanged)="changeSiteLanguage($event.value)" [value]="lastLanguageCode">
     </dx-lookup>
   </div>
   <div class="margin"></div>
 </div>
-<div class="content" role="main">
-  <router-outlet>
+<div>
+  <div class="margin"></div>
+  <app-back>
+  </app-back>
+  <router-outlet role="main">
   </router-outlet>
 </div>

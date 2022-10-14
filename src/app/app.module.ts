@@ -13,6 +13,7 @@ import { NotAuthorizedComponentComponent } from './Services/not-authorized-compo
 import { SharedModuleModule } from './Services/SharedModule/shared-module/shared-module.module';
 import { NgxTranslateModule } from './Services/translate/translate.module';
 import { DxButtonComponent, DxButtonModule, DxLookupModule } from 'devextreme-angular';
+import { BackComponent } from './Shared/back/back.component';
 
 
 
@@ -21,7 +22,8 @@ import { DxButtonComponent, DxButtonModule, DxLookupModule } from 'devextreme-an
     AppComponent,
     SignOutRedirectComponentComponent,
     SignRedirectComponentComponent,
-    NotAuthorizedComponentComponent
+    NotAuthorizedComponentComponent,
+    BackComponent
   ],
   imports: [
     BrowserModule,

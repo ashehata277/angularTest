@@ -5,6 +5,7 @@ import { MainComponentComponent } from './main-component/main-component.componen
 import { SharedModuleModule } from 'src/app/Services/SharedModule/shared-module/shared-module.module';
 import { TestShellComponent } from './test-shell/test-shell.component';
 import { TestFormDataService } from './shared/test-form-data.service';
+import { Service } from './shared/dataservice.service';
 
 
 
@@ -21,6 +22,6 @@ import { TestFormDataService } from './shared/test-form-data.service';
     ]),
     SharedModuleModule
     ],
-  providers:[TestFormDataService]
+  providers:[TestFormDataService,Service]
 })
 export class TestModuleModule { }
