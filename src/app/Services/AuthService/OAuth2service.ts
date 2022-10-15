@@ -17,9 +17,9 @@ export class OAuthService {
     private idpAuthority: string;
     public isUserAuthenticaed :boolean;
     constructor(private reader: ConfigurationReader) {
-        this.clientRoot = reader.Read('baseUrl');
-        this.clientId = reader.Read('clientId');
-        this.idpAuthority = reader.Read('idpAuthority');
+        this.clientRoot = this.reader.Read('baseUrl');
+        this.clientId = this.reader.Read('clientId');
+        this.idpAuthority = this.reader.Read('idpAuthority');
 
 
         this._userManager = new UserManager(
@@ -53,7 +53,7 @@ export class OAuthService {
     public GetUser = (): Promise<User | null> => {
         return this._userManager.getUser();
         };
-      
+
 
     completeLogout() {
         this._user = null;
@@ -92,4 +92,4 @@ export class OAuthService {
         }
     }
 
-}   
+}

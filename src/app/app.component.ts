@@ -1,6 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { OAuthService } from './Services/AuthService/OAuth2service';
 import { RTLService } from './Services/GlobalLanguageService/RTLService';
@@ -23,7 +22,7 @@ export class AppComponent implements AfterViewInit {
   }
   SupportedLanguages: { Code: string, LabelEn: string , LabelAr:string}[] = [];
   lastLanguageCode: string | null;
-  public displayTextLang :string = "LabelEn"; 
+  public displayTextLang :string = "LabelEn";
 
 
   constructor(private translate: TranslateService,
@@ -34,7 +33,7 @@ export class AppComponent implements AfterViewInit {
     this.userAuthenticated.next(false);
     this.AddSupportedLanguages();
     this.LoginChange();
-    this.AuthenicationSubscriber();   
+    this.AuthenicationSubscriber();
     this.SetTransalteService();
   }
   ngAfterViewInit(): void {

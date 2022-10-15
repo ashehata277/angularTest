@@ -11,8 +11,9 @@
   </dx-button>
   <div class="spacer"></div>
   <div>
-    <dx-lookup [rtlEnabled]="rtlService.isRtlEnabled" [dataSource]="Languagues()" [displayExpr]="displayTextLang" valueExpr="Code"
-      (onValueChanged)="changeSiteLanguage($event.value)" [value]="lastLanguageCode">
+    <dx-lookup [searchEnabled]="false" [showClearButton]="false" [showCancelButton]="false"
+      [rtlEnabled]="rtlService.isRtlEnabled" [dataSource]="Languagues()" [displayExpr]="displayTextLang"
+      valueExpr="Code" (onValueChanged)="changeSiteLanguage($event.value)" [value]="lastLanguageCode">
     </dx-lookup>
   </div>
   <div class="margin"></div>

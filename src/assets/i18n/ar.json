@@ -7,5 +7,7 @@
     "LastName": "الاسم الاخير",
     "Position": "الوضع",
     "State": "الحالة",
-    "City": "المدينة"
+    "City": "المدينة",
+    "routingModuleErrorMsg":"يجب إضافة ال'Module Id'",
+    "routingModuleErrortitle":"للمطورين"
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {  DxButtonModule, DxChartModule, DxCheckBoxModule, DxDataGridModule, DxDateBoxModule, DxDropDownBoxModule, DxDropDownButtonModule, DxFileUploaderModule, DxFormModule, DxHtmlEditorModule, DxListModule, DxLoadIndicatorModule, DxLoadPanelModule, DxLookupModule, DxMapModule, DxMenuModule, DxMultiViewModule, DxNavBarModule, DxNumberBoxModule, DxPopupModule, DxProgressBarModule, DxRadioGroupModule, DxScrollViewModule, DxSelectBoxModule, DxSortableModule, DxTabPanelModule, DxTabsModule, DxTagBoxModule, DxTemplateModule, DxTextAreaModule, DxTextBoxModule, DxToolbarModule, DxTreeListModule, DxTreeViewModule, DxValidationGroupModule, DxValidatorModule } from 'devextreme-angular';
-import { NgxTranslateModule } from '../../translate/translate.module';
 import { FormsModule } from '@angular/forms';
 import { OAuthService } from '../../AuthService/OAuth2service';
 import { ConfigurationReader } from '../../CofigurationReader/ConfigurationReader';
@@ -11,7 +10,6 @@ import { FormStateService } from '../../FormStateService/FormStateService';
 import { AuthorizationGuard } from '../../RouterGaurds/AuthorizationGuard';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { I18nServiceService } from '../../i18nService/i18n-service.service';
-import { ToastrModule } from 'ngx-toastr';
 
 
 const DX_SHARED_MODULES = [
