@@ -10,6 +10,7 @@ import { FormStateService } from '../../FormStateService/FormStateService';
 import { AuthorizationGuard } from '../../RouterGaurds/AuthorizationGuard';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { I18nServiceService } from '../../i18nService/i18n-service.service';
+import { AppRoutingModule } from 'src/app/appRoutes';
 
 
 const DX_SHARED_MODULES = [
@@ -74,7 +75,8 @@ const providers = [
         useClass: I18nServiceService,
 
       },
-    })
+    }),
+    AppRoutingModule
   ],
   providers: [providers],
   exports:[

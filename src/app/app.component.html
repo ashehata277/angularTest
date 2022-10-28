@@ -20,6 +20,12 @@
 </div>
 <div>
   <div class="margin"></div>
+  <!-- <div *hideAfter="5000 as time; then placeholder; let counter=counter">
+    <h5>Test hide Directive {{time}} ----------------{{counter}} </h5>
+  </div>
+  <ng-template #placeholder class="placeholder banner" let-hiddenAfter="hideAfter">
+    <h5>replaced {{hiddenAfter}}</h5>
+  </ng-template> -->
   <app-back>
   </app-back>
   <router-outlet role="main">

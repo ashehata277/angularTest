@@ -1,4 +1,5 @@
-import { Routes } from "@angular/router";
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
 import { NotAuthorizedComponentComponent } from "./Services/not-authorized-component/not-authorized-component.component";
 import { AuthorizationGuard } from "./Services/RouterGaurds/AuthorizationGuard";
 import { SignOutRedirectComponentComponent } from "./SignComponents/sign-out-redirect-component/sign-out-redirect-component.component";
@@ -18,4 +19,11 @@ const appRoutes: Routes = [
     }
 ]
 
-export default appRoutes;
+
+@NgModule({
+  imports:[RouterModule.forRoot(appRoutes)],
+  exports:[RouterModule]
+})
+export class AppRoutingModule{
+
+}

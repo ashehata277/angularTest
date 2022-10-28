@@ -3,13 +3,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { OAuthService } from './Services/AuthService/OAuth2service';
 import { RTLService } from './Services/GlobalLanguageService/RTLService';
+import { SafeData } from './Services/RouterGaurds/safeData';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit , SafeData {
   userAuthenticated: Subject<boolean> = new Subject<boolean>();
   isAuthenticatedUser: boolean = false;
   _user: string | undefined;
@@ -35,6 +36,9 @@ export class AppComponent implements AfterViewInit {
     this.LoginChange();
     this.AuthenicationSubscriber();
     this.SetTransalteService();
+  }
+  isDataSafe(): boolean {
+    return false;
   }
   ngAfterViewInit(): void {
     this.cdr.detectChanges();
@@ -74,7 +78,6 @@ export class AppComponent implements AfterViewInit {
     this.SupportedLanguages.push(this.arabic);
     this.SupportedLanguages.push(this.english);
   }
-
   changeSiteLanguage(localeCode: string): void {
     const selectedLanguage = this.SupportedLanguages
       .find((language) => language.Code === localeCode);
@@ -85,7 +88,6 @@ export class AppComponent implements AfterViewInit {
     this.displayTextLang  = localeCode === 'en' ? "LabelEn" : "LabelAr";
     document.dir = localeCode === 'en' ? 'ltr' : 'rtl';
   }
-
   public LoginChange() {
     this._authService.GetUser()
       .then(x => {
