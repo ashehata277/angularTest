@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { firstValueFrom, Observable, of } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { ConfirmPopupComponent } from 'src/app/Shared/confirm-popup/confirm-popup.component';
 import { SafeData } from './safeData';
 
