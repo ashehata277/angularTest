@@ -10,10 +10,10 @@ import { OAuthService } from 'src/app/Services/AuthService/OAuth2service';
 export class SignRedirectComponentComponent implements OnInit {
 
   constructor(private oAuthService: OAuthService, private _router: Router) {
-   
+
   }
   ngOnInit(): void {
-    this.oAuthService.completelogin().then(user => {
+    this.oAuthService.completelogin().then(_ => {
       this._router.navigate(['/'], { replaceUrl: true });
     });
   }

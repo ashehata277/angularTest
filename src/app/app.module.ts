@@ -14,10 +14,11 @@ import { I18nServiceService } from './Services/i18nService/i18n-service.service'
 import { NotAuthorizedComponentComponent } from './Services/not-authorized-component/not-authorized-component.component';
 import { Toastrservice } from './Services/ToastrService/ToastrService';
 import { BackComponent } from './Shared/back/back.component';
+import { ConfirmPopupComponent } from './Shared/confirm-popup/confirm-popup.component';
 import { HideAfterDirective } from './Shared/Directives/hiderAfter/hide-after.directive';
+import { LoggerService } from './Shared/Logger/logger.service';
 import { SignOutRedirectComponentComponent } from './SignComponents/sign-out-redirect-component/sign-out-redirect-component.component';
 import { SignRedirectComponentComponent } from './SignComponents/sign-redirect-component/sign-redirect-component.component';
-import { ConfirmPopupComponent } from './Shared/confirm-popup/confirm-popup.component';
 
 
 
@@ -50,10 +51,15 @@ import { ConfirmPopupComponent } from './Shared/confirm-popup/confirm-popup.comp
   ],
   providers: [
     {
-      provide : API_BASE_URL,
-      useFactory : getUrlFromConfiguration,
+      provide: API_BASE_URL,
+      useFactory: getUrlFromConfiguration,
       deps: [ConfigurationReader]
-    }, RTLService,Toastrservice],
+    },
+    RTLService,
+    Toastrservice,
+    {
+      provide: LoggerService
+    }],
 
   bootstrap: [AppComponent]
 })
