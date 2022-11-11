@@ -7,7 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve"
+    "dev": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve",
+    "publish": "node --max_old_space_size=16384 ./node_modules/@angular/cli/bin/ng serve  --configuration production"
+
   },
   "private": true,
   "dependencies": {
