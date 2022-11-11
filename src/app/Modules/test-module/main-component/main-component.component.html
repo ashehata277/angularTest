@@ -1,20 +1,26 @@
 <div id="data-grid-demo">
-    <dx-data-grid useIcons="true" [rtlEnabled]="rtlService.isRtlEnabled" id="gridContainer" keyExpr="ID"
-        [dataSource]="dataSource" [showBorders]="true" (onEditorPreparing)="onEditorPreparing($event)">
-        <dxo-editing mode="cell" [allowUpdating]="true" [allowAdding]="false">
-        </dxo-editing>
-        <dxi-column alignment="center" dataType="string" dataField="FirstName" [caption]="'FirstName' | translate"></dxi-column>
-        <dxi-column alignment="center" dataType="string" dataField="LastName" [caption]="'LastName' | translate"></dxi-column>
-        <dxi-column alignment="center" dataType="string" dataField="Position" [caption]="'Position' | translate"></dxi-column>
-        <dxi-column alignment="center" dataType="number" dataField="StateID" [caption]="'State' | translate" [setCellValue]="setStateValue">
-            <dxi-validation-rule type="required"> </dxi-validation-rule>
-            <dxo-lookup [dataSource]="states" valueExpr="ID" displayExpr="Name">
-            </dxo-lookup>
-        </dxi-column>
-        <dxi-column alignment="center" dataType="number" dataField="CityID" [caption]="'City' | translate">
-            <dxi-validation-rule type="required" message="City is Required"> </dxi-validation-rule>
-            <dxo-lookup [dataSource]="getFilteredCities" valueExpr="ID" displayExpr="Name">
-            </dxo-lookup>
-        </dxi-column>
-    </dx-data-grid>
+  <dx-data-grid useIcons="true" [rtlEnabled]="rtlService.isRtlEnabled" id="gridContainer" keyExpr="ID"
+    [dataSource]="dataSource" [showBorders]="true" (onEditorPreparing)="onEditorPreparing($event)">
+    <dxo-editing mode="cell" [allowUpdating]="true" [allowAdding]="false">
+    </dxo-editing>
+    <dxi-column alignment="center" dataType="string" dataField="FirstName" [allowEditing]="false"
+      [caption]="'FirstName' | translate"></dxi-column>
+    <dxi-column alignment="center" dataType="string" dataField="LastName" [allowEditing]="false"
+      [caption]="'LastName' | translate">
+    </dxi-column>
+    <dxi-column alignment="center" dataType="string" dataField="Position" [allowEditing]="false"
+      [caption]="'Position' | translate">
+    </dxi-column>
+    <dxi-column alignment="center" dataType="number" dataField="StateID" [caption]="'State' | translate"
+      [setCellValue]="setStateValue">
+      <dxi-validation-rule type="required"> </dxi-validation-rule>
+      <dxo-lookup [dataSource]="states" valueExpr="ID" displayExpr="Name">
+      </dxo-lookup>
+    </dxi-column>
+    <dxi-column alignment="center" dataType="number" dataField="CityID" [caption]="'City' | translate">
+      <dxi-validation-rule type="required" message="City is Required"> </dxi-validation-rule>
+      <dxo-lookup [dataSource]="getFilteredCities" valueExpr="ID" displayExpr="Name">
+      </dxo-lookup>
+    </dxi-column>
+  </dx-data-grid>
 </div>

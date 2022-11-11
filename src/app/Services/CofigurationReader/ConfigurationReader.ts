@@ -1,9 +1,9 @@
 import { Injectable, isDevMode } from "@angular/core";
-import DevelopingConfiguration from "../../../assets/Appsettingsdevelopement.json";
 import ProductionConfiguration from "../../../assets/Appsettingsdeployment.json";
+import DevelopingConfiguration from "../../../assets/Appsettingsdevelopement.json";
 
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn:'root'})
 export class ConfigurationReader {
     constructor() {
 

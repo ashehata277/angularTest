@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RTLService } from 'src/app/Services/GlobalLanguageService/RTLService';
 import { City, Employee, Service, State } from '../shared/dataservice.service';
+import { TestFormDataService } from '../shared/test-form-data.service';
 
 @Component({
   selector: 'app-main-component',
@@ -13,13 +14,14 @@ export class MainComponentComponent implements OnInit {
   cities: City[];
 
 
-  constructor(private service: Service ,
-    public rtlService :  RTLService,) {
+  constructor(private service: Service,
+    public rtlService: RTLService,
+    private dataService: TestFormDataService) {
     this.dataSource = this.service.getEmployees();
     this.states = this.service.getStates();
     this.cities = this.service.getCities();
     this.getFilteredCities = this.getFilteredCities.bind(this);
-
+    this.dataService;
   }
 
   ngOnInit(): void {
@@ -30,7 +32,6 @@ export class MainComponentComponent implements OnInit {
     }
   }
   setStateValue(rowData: any, value: any): void {
-    debugger;
     rowData.CityID = null;
     (<any>this).defaultSetCellValue(rowData, value);
   }

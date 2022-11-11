@@ -1,7 +1,8 @@
-import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Inject, Injector } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { OAuthService } from './Services/AuthService/OAuth2service';
+import { API_BASE_URL } from './Services/ClientService/client.service';
 import { RTLService } from './Services/GlobalLanguageService/RTLService';
 import { SafeData } from './Services/RouterGaurds/safeData';
 import { ExprementalLoggerService } from './Shared/Logger/expremental-logger-service.service';
@@ -14,7 +15,13 @@ import { LoggerService } from './Shared/Logger/logger.service';
   providers: [
     {
       provide: LoggerService,
-      useClass: ExprementalLoggerService
+      useClass: ExprementalLoggerService,
+      multi :true
+    },
+    {
+      provide:LoggerService,
+      useClass : LoggerService,
+      multi:true
     }
   ]
 })
@@ -38,14 +45,17 @@ export class AppComponent implements AfterViewInit, SafeData {
     private _authService: OAuthService,
     private cdr: ChangeDetectorRef,
     public rtlService: RTLService,
-    private loggerService: LoggerService) {
+    @Inject(LoggerService) private loggerService: ReadonlyArray<LoggerService>,
+    private inej: Injector ) {
     this.SetPageDirection();
     this.userAuthenticated.next(false);
     this.AddSupportedLanguages();
     this.LoginChange();
     this.AuthenicationSubscriber();
     this.SetTransalteService();
-    this.loggerService.Log("App component");
+    this.loggerService.forEach(x=>x.Log("From App Componenet"));
+    const test = this.inej.get(API_BASE_URL);
+    console.log(test);
   }
   isDataSafe(): boolean {
     return false;

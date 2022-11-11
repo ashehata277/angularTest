@@ -52,7 +52,10 @@ import { SignRedirectComponentComponent } from './SignComponents/sign-redirect-c
   providers: [
     {
       provide: API_BASE_URL,
-      useFactory: getUrlFromConfiguration,
+      useFactory: (reader: ConfigurationReader)=>{
+        console.log(reader.Read('baseUrl'));
+        return reader.Read('baseUrl');
+      },
       deps: [ConfigurationReader]
     },
     RTLService,
@@ -65,6 +68,4 @@ import { SignRedirectComponentComponent } from './SignComponents/sign-redirect-c
 })
 export class AppModule { }
 
-export function getUrlFromConfiguration(reader: ConfigurationReader): string {
-  return reader.Read('baseUrl');
-}
+

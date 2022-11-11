@@ -16,7 +16,13 @@ const appRoutes: Routes = [
         loadChildren: () => import('./Modules/test-module/test-module.module').then(m => m.TestModuleModule),
         canActivate: [AuthorizationGuard],
         data: { ModuleId: 201 }
-    }
+    },
+    {
+      path: 'test-module-two',
+      loadChildren: () => import('./Modules/test-module-two/test-module-two.module').then(m => m.TestModuleTwoModule),
+      canActivate: [AuthorizationGuard],
+      data: { ModuleId: 201 }
+  }
 ]
 
 
