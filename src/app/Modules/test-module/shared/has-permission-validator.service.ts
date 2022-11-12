@@ -5,11 +5,11 @@ import { ModuleValidatorTypes } from './ValidatorsTypesEnum';
 @Injectable(
 
 )
-export class HasPermissionValidatorService implements TestModuleValidator {
+export class HasPermissionValidatorService implements TestModuleValidator<number> {
 
   constructor() { }
   Type: number = ModuleValidatorTypes.PermissionValidator ;
-  Validate(form:any): boolean {
+  Validate(form:number): boolean {
     return true;
   }
 }
