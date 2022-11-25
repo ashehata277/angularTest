@@ -33,7 +33,6 @@ export class OAuthService {
                 loadUserInfo: true,
                 userStore: new WebStorageStateStore({ store: window.localStorage }),
                 filterProtocolClaims: false,
-                // client_secret="a2068121-2c4a-479a-9cc2-4b9d0dc11efd"
             }
         );
         this.isAuthenticated;
