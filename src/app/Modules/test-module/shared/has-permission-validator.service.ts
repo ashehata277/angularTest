@@ -10,7 +10,6 @@ export class HasPermissionValidatorService implements TestModuleValidator<number
   constructor() { }
   Type: number = ModuleValidatorTypes.PermissionValidator ;
   Validate(form:number): boolean {
-    debugger;
     return true;
   }
 }

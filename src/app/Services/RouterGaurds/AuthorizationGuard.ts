@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
-import { Observable } from "rxjs";
+import { from, Observable } from "rxjs";
 import { OAuthService } from "../AuthService/OAuth2service";
 import { Toastrservice } from "../ToastrService/ToastrService";
 
@@ -21,6 +21,11 @@ export class AuthorizationGuard implements  CanActivate {
       return false;
     }
     if (this.authService.isUserAuthenticaed) {
+      from(this.authService.GetUser())
+      .subscribe(x=>{
+        console.log(x?.profile);
+      });
+
       return true;
     }
     else {
