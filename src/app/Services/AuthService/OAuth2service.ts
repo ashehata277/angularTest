@@ -27,12 +27,13 @@ export class OAuthService {
                 authority: this.idpAuthority,
                 client_id: this.clientId,
                 redirect_uri: `${this.clientRoot}/signin-callback`,
-                scope: "openid profile AngularApis",
+                scope: "openid profile Angular-Client-Scope",
                 response_type: "code",
                 post_logout_redirect_uri: `${this.clientRoot}/signout-callback`,
                 loadUserInfo: true,
                 userStore: new WebStorageStateStore({ store: window.localStorage }),
                 filterProtocolClaims: false,
+                // client_secret="a2068121-2c4a-479a-9cc2-4b9d0dc11efd"
             }
         );
         this.isAuthenticated;

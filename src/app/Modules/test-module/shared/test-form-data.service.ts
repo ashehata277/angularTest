@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Subject, withLatestFrom } from 'rxjs';
 import { TestModuleValidator } from './test-module-validator';
+import { ModuleValidatorTypes } from './ValidatorsTypesEnum';
 
 @Injectable()
 export class TestFormDataService {
@@ -54,8 +55,10 @@ export class TestFormDataService {
     // sub1.complete();
     // sub2.complete();
     // sub3.complete();
-
-
+    debugger;
+    const permissionValidator =  this.moduleValidators.find(x=>x.Type === ModuleValidatorTypes.PermissionValidator);
+    const permissionValidatorResult =permissionValidator?.Validate(withlatest);
+    console.log(permissionValidatorResult);
 
     console.log(this.moduleValidators);
     this.moduleValidators.forEach(validator => console.log(validator.Validate(null)));

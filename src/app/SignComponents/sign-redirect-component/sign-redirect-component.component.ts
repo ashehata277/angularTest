@@ -14,6 +14,7 @@ export class SignRedirectComponentComponent implements OnInit {
   }
   ngOnInit(): void {
     this.oAuthService.completelogin().then(_ => {
+      debugger;
       this._router.navigate(['/'], { replaceUrl: true });
     });
   }
