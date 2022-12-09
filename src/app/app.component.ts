@@ -56,6 +56,9 @@ export class AppComponent implements AfterViewInit, SafeData {
     this.loggerService.forEach(x=>x.Log("From App Componenet"));
     const test = this.inej.get(API_BASE_URL);
     console.log(test);
+
+
+
   }
   isDataSafe(): boolean {
     return false;

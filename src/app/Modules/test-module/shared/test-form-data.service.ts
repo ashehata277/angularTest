@@ -1,12 +1,24 @@
 import { Inject, Injectable } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subject, withLatestFrom } from 'rxjs';
+import { RTLService } from 'src/app/Services/GlobalLanguageService/RTLService';
+import { FormServiceBase } from 'src/app/Services/Interfaces/FormBase.Service';
+import { Employee, Service } from './dataservice.service';
 import { TestModuleValidator } from './test-module-validator';
 import { ModuleValidatorTypes } from './ValidatorsTypesEnum';
-
 @Injectable()
-export class TestFormDataService {
+export class TestFormDataService extends FormServiceBase {
+  form: FormGroup;
+  emptyDetail: Employee[] = [];
 
-  constructor(@Inject(TestModuleValidator) private moduleValidators: ReadonlyArray<TestModuleValidator<any>>) {
+  constructor(@Inject(TestModuleValidator) private moduleValidators: ReadonlyArray<TestModuleValidator<any>>,
+    public override rtlService: RTLService,
+    private formBuilder: FormBuilder,
+    public service: Service) {
+      debugger;
+    super(rtlService);
+      this.service;
+
     let sub1 = new Subject<number>();
     let sub2 = new Subject<string>();
     let sub3 = new Subject<number>();
@@ -18,7 +30,7 @@ export class TestFormDataService {
 
     // const fork = forkJoin([sub1, sub2, sub3]).pipe(map(([val1, val2, val3]) => val1 + val2 + val3));
 
-    const withlatest = sub1.pipe(withLatestFrom(sub2,sub3));
+    const withlatest = sub1.pipe(withLatestFrom(sub2, sub3));
 
 
     // combine.subscribe({
@@ -39,7 +51,8 @@ export class TestFormDataService {
 
 
     withlatest.subscribe({
-      next: ([res1,res2,res3]) => { console.log(res1) ;
+      next: ([res1, res2, res3]) => {
+        console.log(res1);
         console.log(res2);
         console.log(res3);
       },
@@ -55,12 +68,32 @@ export class TestFormDataService {
     // sub1.complete();
     // sub2.complete();
     // sub3.complete();
-    const permissionValidator =  this.moduleValidators.find(x=>x.Type === ModuleValidatorTypes.PermissionValidator);
-    const permissionValidatorResult =permissionValidator?.Validate(withlatest);
+    const permissionValidator = this.moduleValidators.find(x => x.Type === ModuleValidatorTypes.PermissionValidator);
+    const permissionValidatorResult = permissionValidator?.Validate(withlatest);
     console.log(permissionValidatorResult);
 
     console.log(this.moduleValidators);
     this.moduleValidators.forEach(validator => console.log(validator.Validate(null)));
 
+    const gridValidtor = this.moduleValidators.find(Validator => Validator.Type === ModuleValidatorTypes.GridValidator);
+    const gridValidatorResult = gridValidtor?.Validate("");
+    const gridValidatorResult2 = gridValidtor?.Validate(null);
+    console.log(gridValidatorResult);
+    console.log(gridValidatorResult2);
+
+    this.LoadModuleData();
+
+    this.form = this.formBuilder.group({
+      DetailList: this.formBuilder.array(this.emptyDetail)
+    });
+
   }
+  override LoadModuleData(): void {
+    super.LoadModuleData();
+  }
+
+
+
+
+
 }

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { DxButtonModule, DxChartModule, DxCheckBoxModule, DxDataGridModule, DxDateBoxModule, DxDropDownBoxModule, DxDropDownButtonModule, DxFileUploaderModule, DxFormModule, DxHtmlEditorModule, DxListModule, DxLoadIndicatorModule, DxLoadPanelModule, DxLookupModule, DxMapModule, DxMenuModule, DxMultiViewModule, DxNavBarModule, DxNumberBoxModule, DxPopupModule, DxProgressBarModule, DxRadioGroupModule, DxScrollViewModule, DxSelectBoxModule, DxSortableModule, DxTabPanelModule, DxTabsModule, DxTagBoxModule, DxTemplateModule, DxTextAreaModule, DxTextBoxModule, DxToolbarModule, DxTreeListModule, DxTreeViewModule, DxValidationGroupModule, DxValidatorModule } from 'devextreme-angular';
 import { OAuthService } from '../../AuthService/OAuth2service';
@@ -66,6 +66,8 @@ const providers = [
   declarations: [],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     DX_SHARED_MODULES,
     FormsModule,
     TranslateModule.forChild({
@@ -82,7 +84,8 @@ const providers = [
       FormsModule,
       CommonModule,
       TranslateModule,
-
+      FormsModule,
+      ReactiveFormsModule
     ]
 
 })

@@ -1,3 +1,4 @@
 export enum ModuleValidatorTypes{
-  PermissionValidator = 1
+  PermissionValidator = 1,
+  GridValidator = 2
 }

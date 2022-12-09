@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RTLService } from 'src/app/Services/GlobalLanguageService/RTLService';
-import { City, Employee, Service, State } from '../shared/dataservice.service';
+import { City, State } from '../shared/dataservice.service';
 import { TestFormDataService } from '../shared/test-form-data.service';
 
 @Component({
@@ -9,19 +9,14 @@ import { TestFormDataService } from '../shared/test-form-data.service';
   styleUrls: ['./main-component.component.css']
 })
 export class MainComponentComponent implements OnInit {
-  dataSource: Employee[];
   states: State[];
   cities: City[];
 
 
-  constructor(private service: Service,
+  constructor(
     public rtlService: RTLService,
-    private dataService: TestFormDataService) {
-    this.dataSource = this.service.getEmployees();
-    this.states = this.service.getStates();
-    this.cities = this.service.getCities();
+    public formService: TestFormDataService) {
     this.getFilteredCities = this.getFilteredCities.bind(this);
-    this.dataService;
   }
 
   ngOnInit(): void {
@@ -37,9 +32,35 @@ export class MainComponentComponent implements OnInit {
   }
   getFilteredCities(options: any) {
     return {
-      store: this.cities,
+      store: this.formService.service.getCities(),
       filter: options.data ? ['StateID', '=', options.data.StateID] : null,
     };
   }
 
+
+  ValidateRow(evnet: any) {
+
+
+  }
+  onRowInserted(event: any) {
+
+
+  }
+  onCellClick(event: any) {
+
+
+  }
+  onRowPrepared(e: any) {
+    debugger;
+    if (e.rowType == "data") {
+      if (e.data.StateID === undefined || e.data.StateID === null)
+        return;
+      if (e.data.StateID === 1) {
+        e.rowElement.style.backgroundColor = 'red';
+      }
+      else if (e.data.StateID === 2) {
+        e.rowElement.style.backgroundColor = 'green';
+      }
+    }
+  }
 }

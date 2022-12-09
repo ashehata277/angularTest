@@ -8,6 +8,7 @@ import { HasPermissionValidatorService } from './shared/has-permission-validator
 import { TestFormDataService } from './shared/test-form-data.service';
 import { TestShellComponent } from './test-shell/test-shell.component';
 import { TestModuleValidator } from './shared/test-module-validator';
+import { GridValidatorService } from './shared/grid-validator.service';
 
 
 
@@ -31,7 +32,12 @@ import { TestModuleValidator } from './shared/test-module-validator';
       useClass: HasPermissionValidatorService,
       multi: true
     },
+    {
+      provide: TestModuleValidator,
+      useClass: GridValidatorService,
+      multi: true
+    },
     Service
-    ]
+  ]
 })
 export class TestModuleModule { }
