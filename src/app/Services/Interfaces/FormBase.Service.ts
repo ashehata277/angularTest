@@ -4,7 +4,6 @@ import { RTLService } from "../GlobalLanguageService/RTLService";
 export class FormServiceBase  {
 
   constructor(protected  rtlService: RTLService) {
-    debugger;
 
   }
   LoadModuleData():  void{

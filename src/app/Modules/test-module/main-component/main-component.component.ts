@@ -51,7 +51,6 @@ export class MainComponentComponent implements OnInit {
 
   }
   onRowPrepared(e: any) {
-    debugger;
     if (e.rowType == "data") {
       if (e.data.StateID === undefined || e.data.StateID === null)
         return;

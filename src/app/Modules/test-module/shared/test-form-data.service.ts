@@ -10,14 +10,15 @@ import { ModuleValidatorTypes } from './ValidatorsTypesEnum';
 export class TestFormDataService extends FormServiceBase {
   form: FormGroup;
   emptyDetail: Employee[] = [];
+  x: any = 10;
+  xb: String = '10';
 
   constructor(@Inject(TestModuleValidator) private moduleValidators: ReadonlyArray<TestModuleValidator<any>>,
     public override rtlService: RTLService,
     private formBuilder: FormBuilder,
     public service: Service) {
-      debugger;
     super(rtlService);
-      this.service;
+    this.service;
 
     let sub1 = new Subject<number>();
     let sub2 = new Subject<string>();
@@ -86,7 +87,6 @@ export class TestFormDataService extends FormServiceBase {
     this.form = this.formBuilder.group({
       DetailList: this.formBuilder.array(this.emptyDetail)
     });
-
   }
   override LoadModuleData(): void {
     super.LoadModuleData();
