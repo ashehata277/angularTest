@@ -36,22 +36,4 @@ export class AuthorizationGuard implements CanActivate, OnDestroy {
       return false;
     }
   }
-  // canActivateChild(childRoute: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-
-  //   const moduleId = childRoute.data['ModuleId'];
-  //   if (!moduleId) {
-  //     this.toastr.error(this.translate.instant('routingModuleErrorMsg'), this.translate.instant('routingModuleErrortitle'));
-  //     return false;
-  //   }
-  //   if (this.authService.isUserAuthenticaed) {
-  //     return true;
-  //   }
-  //   else {
-  //     this.router.navigate(['/AccessDenied']);
-  //     return false;
-  //   }
-  // }
-
-
 }
