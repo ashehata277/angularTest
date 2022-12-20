@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve",
-    "publish": "node --max_old_space_size=16384 ./node_modules/@angular/cli/bin/ng serve  --configuration production"
+    "publish": "node --max_old_space_size=16384 ./node_modules/@angular/cli/bin/ng build --output-path dist --base-href"
 
   },
   "private": true,
