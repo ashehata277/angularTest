@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -20,6 +20,12 @@ import { LoggerService } from './Shared/Logger/logger.service';
 import { SignOutRedirectComponentComponent } from './SignComponents/sign-out-redirect-component/sign-out-redirect-component.component';
 import { SignRedirectComponentComponent } from './SignComponents/sign-redirect-component/sign-redirect-component.component';
 
+export function AppInitial(){
+  console.log("app-initializer");
+  return () : Promise<any> =>{
+    return Promise.resolve(0);
+  }
+}
 
 
 @NgModule({
@@ -52,7 +58,7 @@ import { SignRedirectComponentComponent } from './SignComponents/sign-redirect-c
   providers: [
     {
       provide: API_BASE_URL,
-      useFactory: (reader: ConfigurationReader)=>{
+      useFactory: (reader: ConfigurationReader) => {
         console.log(reader.Read('baseUrl'));
         return reader.Read('baseUrl');
       },
@@ -62,6 +68,11 @@ import { SignRedirectComponentComponent } from './SignComponents/sign-redirect-c
     Toastrservice,
     {
       provide: LoggerService
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: AppInitial,
+      multi: true
     }],
 
   bootstrap: [AppComponent]
