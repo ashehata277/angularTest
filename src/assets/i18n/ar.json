@@ -9,5 +9,8 @@
     "State": "الحالة",
     "City": "المدينة",
     "routingModuleErrorMsg":"يجب إضافة ال'Module Id'",
-    "routingModuleErrortitle":"للمطورين"
+    "routingModuleErrortitle":"للمطورين",
+    "LangNameAr":"العربية",
+    "LangNameEn":"الانجليزية",
+    "Language":"اللغة"
 }

@@ -1,33 +1,49 @@
-<div class="toolbar" role="banner">
-  <img width="40" alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
+
+<div class="toolbar m-3" role="banner">
+  <img width="40"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+    />
   <span> {{'Welcome' | translate}} </span>
   <span [hidden]="!isAuthenticatedUser">{{_user}}</span>
-  <dx-button [rtlEnabled]="rtlService.isRtlEnabled " [visible]="!isAuthenticatedUser" (onClick)="login()">
+  <dx-button class="bg-blue-500 hover:bg-green-200 text-white font-bold py-2 px-4 rounded mx-3"
+    [rtlEnabled]="rtlService.isRtlEnabled "
+    [visible]="!isAuthenticatedUser" (onClick)="login()">
     <span>{{'Login' | translate}}</span>
   </dx-button>
-  <dx-button [rtlEnabled]="rtlService.isRtlEnabled " [visible]="isAuthenticatedUser" (onClick)="logout()">
+  <dx-button
+    class="bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mx-3"
+    [rtlEnabled]="rtlService.isRtlEnabled"
+    [visible]="isAuthenticatedUser" (onClick)="logout()">
     <span>{{'Logout' | translate }}</span>
   </dx-button>
   <div class="spacer"></div>
   <div>
-    <dx-lookup [searchEnabled]="false" [showClearButton]="false" [showCancelButton]="false"
-      [rtlEnabled]="rtlService.isRtlEnabled" [dataSource]="Languagues()" [displayExpr]="displayTextLang"
-      valueExpr="Code" (onValueChanged)="changeSiteLanguage($event.value)" [value]="lastLanguageCode">
-    </dx-lookup>
+    <dx-drop-down-button
+      [splitButton]="true"
+      [dropDownOptions]="{ width: 230 }"
+      [rtlEnabled]="rtlService.isRtlEnabled"
+      [items]="(Languagues$ |async)??[]"
+      [showArrowIcon]="true"
+      (onItemClick)="changeSiteLanguage($event)"
+      displayExpr="text"
+      keyExpr="Id"
+      [hint]="'Language' |translate"
+      [text]="'Language' |translate"
+      >
+    </dx-drop-down-button>
   </div>
   <div class="margin"></div>
 </div>
 <div>
   <div class="margin"></div>
   <!-- <div *hideAfter="5000 as time; then placeholder; let counter=counter">
-    <h5>Test hide Directive {{time}} ----------------{{counter}} </h5>
-  </div>
-  <ng-template #placeholder class="placeholder banner" let-hiddenAfter="hideAfter">
-    <h5>replaced {{hiddenAfter}}</h5>
-  </ng-template> -->
-  <app-back>
+      <h5>Test hide Directive {{time}} ----------------{{counter}} </h5>
+    </div>
+    <ng-template #placeholder class="placeholder banner" let-hiddenAfter="hideAfter">
+      <h5>replaced {{hiddenAfter}}</h5>
+    </ng-template> -->
+  <app-back class="m-3">
   </app-back>
-  <router-outlet role="main">
+  <router-outlet role="main" class="p-3">
   </router-outlet>
 </div>

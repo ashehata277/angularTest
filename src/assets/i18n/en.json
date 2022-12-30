@@ -9,5 +9,8 @@
     "State": "State ",
     "City": "City",
     "routingModuleErrorMsg":"Missed module id in routing",
-    "routingModuleErrortitle":"For developers"
+    "routingModuleErrortitle":"For developers",
+    "LangNameAr":"Arabic",
+    "LangNameEn":"English",
+    "Language":"Language"
 }

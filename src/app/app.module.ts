@@ -3,7 +3,7 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { DxButtonModule, DxLookupModule, DxPopupModule } from 'devextreme-angular';
+import { DxButtonModule, DxDropDownButtonModule, DxLookupModule, DxPopupModule } from 'devextreme-angular';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './appRoutes';
@@ -46,6 +46,7 @@ export function AppInitial(){
     DxButtonModule,
     DxLookupModule,
     DxPopupModule,
+    DxDropDownButtonModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

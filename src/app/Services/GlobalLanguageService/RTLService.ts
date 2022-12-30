@@ -9,6 +9,7 @@ export class RTLService  implements OnDestroy{
   constructor(private translate: TranslateService) {
 
     this.sub.sink = this.translate.onLangChange.asObservable().subscribe(x => {
+      debugger;
       if (this.translate.currentLang == 'ar')
         this.isRtlEnabled = true;
       else
