@@ -1,7 +1,7 @@
 import { ModuleValidatorTypes } from "./ValidatorsTypesEnum";
 
 export class TestModuleValidator<T> {
-  Validate(form:T) : boolean{
+  Validate(value:T) : boolean{
     return false;
   };
   Type : ModuleValidatorTypes
