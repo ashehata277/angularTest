@@ -1,5 +1,6 @@
 <div id="data-grid-demo">
   <dx-data-grid
+    #grid
     useIcons="true"
     [rtlEnabled]="rtlService.isRtlEnabled"
     id="gridContainer"
@@ -10,25 +11,48 @@
     (onCellClick)="onCellClick($event)"
     (onRowInserted)="onRowInserted($event)"
     (onRowValidating)="ValidateRow($event)"
-    (onRowPrepared)="onRowPrepared($event)">
+    (onRowPrepared)="onRowPrepared($event)"
+    (onSelectionChanged)="onSelectionChanged($event)">
     <dxo-editing mode="cell" [allowUpdating]="true" [allowAdding]="true">
     </dxo-editing>
-    <dxi-column alignment="center" dataType="string" dataField="FirstName" [caption]="'FirstName' | translate">
+    <dxo-selection mode="multiple"></dxo-selection>
+    <dxi-column alignment="center" dataType="string" dataField="FirstName"
+      [caption]="'FirstName' | translate">
     </dxi-column>
-    <dxi-column alignment="center" dataType="string" dataField="LastName" [caption]="'LastName' | translate">
+    <dxi-column alignment="center" dataType="string" dataField="LastName"
+      [caption]="'LastName' | translate">
     </dxi-column>
-    <dxi-column alignment="center" dataType="string" dataField="Position" [caption]="'Position' | translate">
+    <dxi-column alignment="center" dataType="string" dataField="Position"
+      [caption]="'Position' | translate">
     </dxi-column>
-    <dxi-column alignment="center" dataType="number" dataField="StateID" [caption]="'State' | translate"
+    <dxi-column alignment="center" dataType="boolean" dataField="test"
+      [caption]="'test' | translate">
+    </dxi-column>
+    <dxi-column alignment="center" dataField="testtemplate"
+      [caption]="'test' | translate"
+      cellTemplate="testTemplate"
+      [allowEditing]="false">
+      <div *dxTemplate="let data of 'testTemplate'">
+        <dx-switch [value]="false" [disabled]="data.data?.StateID===1"
+          (onValueChanged)="changed(data)"></dx-switch>
+      </div>
+    </dxi-column>
+    <dxi-column alignment="center" dataType="number" dataField="StateID"
+      [caption]="'State' | translate"
       [setCellValue]="setStateValue">
       <dxi-validation-rule type="required"> </dxi-validation-rule>
-      <dxo-lookup [dataSource]="formService.service.getStates()" valueExpr="ID" displayExpr="Name">
+      <dxo-lookup [dataSource]="formService.service.getStates()" valueExpr="ID"
+        displayExpr="Name">
       </dxo-lookup>
     </dxi-column>
-    <dxi-column alignment="center" dataType="number" dataField="CityID" [caption]="'City' | translate">
-      <dxi-validation-rule type="required" message="City is Required"> </dxi-validation-rule>
-      <dxo-lookup [dataSource]="formService.service.getCities()" valueExpr="ID" displayExpr="Name">
+    <dxi-column alignment="center" dataType="number" dataField="CityID"
+      [caption]="'City' | translate">
+
+      <dxo-lookup [dataSource]="getFilteredCities" valueExpr="ID"
+        displayExpr="Name">
       </dxo-lookup>
+      <dxi-validation-rule type="required" message="City is Required">
+      </dxi-validation-rule>
     </dxi-column>
   </dx-data-grid>
 </div>

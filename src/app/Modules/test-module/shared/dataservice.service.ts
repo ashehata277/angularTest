@@ -257,4 +257,7 @@ export class Service {
   getCities() {
     return cities;
   }
+  getCitiesfil(stateId:number) {
+    return cities.filter(x=>x.StateID == stateId);
+  }
 }
