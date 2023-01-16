@@ -26,6 +26,35 @@ export class AppComponent implements AfterViewInit, SafeData, OnDestroy {
     this.userAuthenticated.next(false);
     this.LoginChange();
     this.AuthenicationSubscriber();
+
+    this.checkMapper();
+  }
+  checkMapper() {
+    debugger;
+    let sourceObjectTest =  {};
+    sourceObjectTest['sourceProp1']= 'value11';
+    sourceObjectTest['sourceProp2']= 'value21';
+    sourceObjectTest['sourceProp3']= 'value31';
+
+
+
+    let sourceObjectTest2 =  {};
+    sourceObjectTest2['sourceProp1']= 'value12';
+    sourceObjectTest2['sourceProp2']= 'value22';
+    sourceObjectTest2['sourceProp3']= 'value33';
+
+    let arrayObjects = [sourceObjectTest,sourceObjectTest2];
+
+    let configuration = {
+      sourceProp1 : 'destionationProp1',
+      sourceProp2 : 'destionationProp2',
+      sourceProp3 : 'destionationProp3',
+    };
+
+    let destionationObject  = mapTwoObjects(sourceObjectTest,configuration);
+    let destionationObjectArray  = mapTwoArray(arrayObjects,configuration);
+    destionationObject;
+    destionationObjectArray;
   }
   ngOnDestroy(): void {
     this.sub.unsubscribe();
@@ -93,6 +122,29 @@ export class AppComponent implements AfterViewInit, SafeData, OnDestroy {
   public logout = () => {
     this._authService.logout();
   }
+}
+
+
+
+export function mapTwoObjects<T>(source: any, configuration: any):T {
+  let sourcekeys: string[] = Object.keys(configuration);
+  let destinationkeys: string[] = Object.values(configuration);
+  let destinationObject = {};
+  destinationkeys.forEach(key => {
+    const indexofDestinationKey = destinationkeys.indexOf(key);
+    const sourceKey = sourcekeys[indexofDestinationKey];
+    destinationObject[key] = source[sourceKey];
+  });
+  return destinationObject as T;
+}
+
+export function mapTwoArray<T>(sources:any[],configuration:any):T[]{
+  let destinations : any[] = [];
+  sources.forEach(source=>{
+    let destination =  mapTwoObjects<T>(source,configuration);
+    destinations.push(destination);
+  });
+  return destinations as T[];
 }
 
 
