@@ -5,7 +5,11 @@ import { SubSink } from 'subsink';
 import { OAuthService } from './Services/AuthService/OAuth2service';
 import { RTLService } from './Services/GlobalLanguageService/RTLService';
 import { SafeData } from './Services/RouterGaurds/safeData';
-
+export interface testMapper{
+  destionationProp1:string;
+  destionationProp2:string;
+  destionationProp3:string;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -51,8 +55,8 @@ export class AppComponent implements AfterViewInit, SafeData, OnDestroy {
       sourceProp3 : 'destionationProp3',
     };
 
-    let destionationObject  = mapTwoObjects(sourceObjectTest,configuration);
-    let destionationObjectArray  = mapTwoArray(arrayObjects,configuration);
+    let destionationObject  = mapTwoObjects<testMapper>(sourceObjectTest,configuration);
+    let destionationObjectArray  = mapTwoArray<testMapper>(arrayObjects,configuration);
     destionationObject;
     destionationObjectArray;
   }
