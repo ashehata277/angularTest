@@ -5,6 +5,10 @@ import { SubSink } from 'subsink';
 import { OAuthService } from './Services/AuthService/OAuth2service';
 import { RTLService } from './Services/GlobalLanguageService/RTLService';
 import { SafeData } from './Services/RouterGaurds/safeData';
+import format from 'date-fns/format';
+import compareDesc from 'date-fns/compareDesc';
+import { arMA } from 'date-fns/locale';
+import startOfDay from 'date-fns/startOfDay';
 export interface testMapper{
   destionationProp1:string;
   destionationProp2:string;
@@ -32,9 +36,22 @@ export class AppComponent implements AfterViewInit, SafeData, OnDestroy {
     this.AuthenicationSubscriber();
 
     this.checkMapper();
+    this.TestDateFns();
+  }
+  TestDateFns() {
+    debugger;
+    let testDateOne = format(new Date(),'yyyy/MM/dd',{locale:arMA});
+    let datetoSort =  [
+      new Date(1995, 6, 2),
+      new Date(1987, 1, 11),
+      new Date(1989, 6, 10)
+    ]
+
+    console.log(format(startOfDay(new Date()),'yyyy-MM-dd HH:mm:ss'));
+    console.log(datetoSort.sort(compareDesc))
+    console.log(testDateOne);
   }
   checkMapper() {
-    debugger;
     let sourceObjectTest =  {};
     sourceObjectTest['sourceProp1']= 'value11';
     sourceObjectTest['sourceProp2']= 'value21';

@@ -28,7 +28,7 @@ export class MainComponentComponent implements OnInit {
       e.editorOptions.disabled = (typeof e.row.data.StateID !== 'number');
     }
   }
-  onSelectionChanged(event:any){
+  onSelectionChanged(event: any) {
     debugger;
   }
   setStateValue(rowData: any, value: any): void {
@@ -62,12 +62,17 @@ export class MainComponentComponent implements OnInit {
   onCellClick(event: any) {
     debugger;
     if (event.column.command === 'select' && event.data?.StateID === 1) {
-      event.column.cellTemplate=null;
+      event.column.cellTemplate = null;
     }
 
   }
 
   onRowPrepared(e: any) {
+
+  }
+
+  DeleteDetail = (e) => {
+    debugger
 
   }
 }
