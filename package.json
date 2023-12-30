@@ -22,6 +22,7 @@
     "@angular/router": "^14.2.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "array-utils-mapper": "^0.0.12",
     "bootstrap": "^5.1.3",
     "date-fns": "^2.29.3",
     "devextreme": "22.1.5",

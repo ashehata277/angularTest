@@ -9,10 +9,10 @@ import format from 'date-fns/format';
 import compareDesc from 'date-fns/compareDesc';
 import { arMA } from 'date-fns/locale';
 import startOfDay from 'date-fns/startOfDay';
-export interface testMapper{
-  destionationProp1:string;
-  destionationProp2:string;
-  destionationProp3:string;
+export interface testMapper {
+  destionationProp1: string;
+  destionationProp2: string;
+  destionationProp3: string;
 }
 @Component({
   selector: 'app-root',
@@ -34,46 +34,46 @@ export class AppComponent implements AfterViewInit, SafeData, OnDestroy {
     this.userAuthenticated.next(false);
     this.LoginChange();
     this.AuthenicationSubscriber();
-
     this.checkMapper();
     this.TestDateFns();
+
   }
   TestDateFns() {
     debugger;
-    let testDateOne = format(new Date(),'yyyy/MM/dd',{locale:arMA});
-    let datetoSort =  [
+    let testDateOne = format(new Date(), 'yyyy/MM/dd', { locale: arMA });
+    let datetoSort = [
       new Date(1995, 6, 2),
       new Date(1987, 1, 11),
       new Date(1989, 6, 10)
     ]
 
-    console.log(format(startOfDay(new Date()),'yyyy-MM-dd HH:mm:ss'));
+    console.log(format(startOfDay(new Date()), 'yyyy-MM-dd HH:mm:ss'));
     console.log(datetoSort.sort(compareDesc))
     console.log(testDateOne);
   }
   checkMapper() {
-    let sourceObjectTest =  {};
-    sourceObjectTest['sourceProp1']= 'value11';
-    sourceObjectTest['sourceProp2']= 'value21';
-    sourceObjectTest['sourceProp3']= 'value31';
+    let sourceObjectTest = {};
+    sourceObjectTest['sourceProp1'] = 'value11';
+    sourceObjectTest['sourceProp2'] = 'value21';
+    sourceObjectTest['sourceProp3'] = 'value31';
 
 
 
-    let sourceObjectTest2 =  {};
-    sourceObjectTest2['sourceProp1']= 'value12';
-    sourceObjectTest2['sourceProp2']= 'value22';
-    sourceObjectTest2['sourceProp3']= 'value33';
+    let sourceObjectTest2 = {};
+    sourceObjectTest2['sourceProp1'] = 'value12';
+    sourceObjectTest2['sourceProp2'] = 'value22';
+    sourceObjectTest2['sourceProp3'] = 'value33';
 
-    let arrayObjects = [sourceObjectTest,sourceObjectTest2];
+    let arrayObjects = [sourceObjectTest, sourceObjectTest2];
 
     let configuration = {
-      sourceProp1 : 'destionationProp1',
-      sourceProp2 : 'destionationProp2',
-      sourceProp3 : 'destionationProp3',
+      sourceProp1: 'destionationProp1',
+      sourceProp2: 'destionationProp2',
+      sourceProp3: 'destionationProp3',
     };
 
-    let destionationObject  = mapTwoObjects<testMapper>(sourceObjectTest,configuration);
-    let destionationObjectArray  = mapTwoArray<testMapper>(arrayObjects,configuration);
+    let destionationObject = mapTwoObjects<testMapper>(sourceObjectTest, configuration);
+    let destionationObjectArray = mapTwoArray<testMapper>(arrayObjects, configuration);
     destionationObject;
     destionationObjectArray;
   }
@@ -111,7 +111,7 @@ export class AppComponent implements AfterViewInit, SafeData, OnDestroy {
     }
   }
   private AuthenicationSubscriber = () => {
-    this._authService._loginChangedSubject.asObservable().subscribe(x => {
+    this._authService._loginChangedSubject.asObservable().subscribe(() => {
       this.LoginChange();
     });
     this.userAuthenticated.subscribe(x => {
@@ -147,7 +147,7 @@ export class AppComponent implements AfterViewInit, SafeData, OnDestroy {
 
 
 
-export function mapTwoObjects<T>(source: any, configuration: any):T {
+export function mapTwoObjects<T>(source: any, configuration: any): T {
   let sourcekeys: string[] = Object.keys(configuration);
   let destinationkeys: string[] = Object.values(configuration);
   let destinationObject = {};
@@ -159,10 +159,10 @@ export function mapTwoObjects<T>(source: any, configuration: any):T {
   return destinationObject as T;
 }
 
-export function mapTwoArray<T>(sources:any[],configuration:any):T[]{
-  let destinations : any[] = [];
-  sources.forEach(source=>{
-    let destination =  mapTwoObjects<T>(source,configuration);
+export function mapTwoArray<T>(sources: any[], configuration: any): T[] {
+  let destinations: any[] = [];
+  sources.forEach(source => {
+    let destination = mapTwoObjects<T>(source, configuration);
     destinations.push(destination);
   });
   return destinations as T[];
